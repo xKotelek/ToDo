@@ -34,6 +34,7 @@ if(isset($_GET['email']) && isset($_GET['token'])) {
 
 ?>
 
+<head><title>ToDo &bullet; Password Reset</title><link rel="icon" href="assets/logo.png"></head>
 <div style="background:#1b263b;width:100%;height:100vh;">
     <center style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);padding:30px;border-radius:10px;background:#0d1b2a;">
         <h1 style="color:white;font-weight:bold;">ToDo!</h1>

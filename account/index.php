@@ -21,6 +21,7 @@ if(!$logged) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
     <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="../assets/logo.png">s
 </head>
 <body>
     <header class="head">
