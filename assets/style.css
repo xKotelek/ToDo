@@ -1,0 +1,383 @@
+:root {
+    --background: #1b263b;
+    --header: #0d1b2a;
+    --border: #091018;
+    --done: #a7c957;
+    --delete: #ef233c;
+    --lightgray: #778da9;
+    --block: #415a77;
+}
+  
+::-webkit-scrollbar {
+    display: none;
+}
+  
+  
+body{
+    background-color: var(--background); 
+    display: flex;
+    flex-direction: column; 
+    margin: 0;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    scrollbar-width: none;
+    width: 100vw;
+}
+  
+.head{
+    height: 54px;
+    width: calc(100% - 10px);
+    background-color: var(--header);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    margin: 4px;
+    border-radius: 10px;
+    box-shadow: var(--header) 0px 0px 10px;
+    display: flex;
+    flex-direction: row;
+    border: 1px var(--border) solid;
+    align-items: center;
+}
+  
+.head left name{
+    font-weight: 900;
+    position: relative;
+    left: 12px;
+    font-size: 24px;
+    cursor: pointer;
+}
+  
+.head right{
+    margin-left: auto; 
+    margin-right: 0;
+}
+  
+.head right login{
+    font-weight: 600;
+    margin-right: 16px;
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 2px;
+    transition: 50ms linear;
+}
+.head right login:hover{
+    color: var(--lightgray);
+}
+  
+.content{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 10px;
+}
+
+  
+.content.auth {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content.account {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.content.account contentgrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+}
+.content-item {
+    background: var(--header);
+    padding: 15px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+  
+.content item{
+    width: 95vw;
+    max-width: 800px;
+    height: 75px;
+    background-color: var(--block);
+    border-radius: 10px;
+    border: 1px var(--border) solid;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    margin-bottom: 10px;
+}
+  
+.content item dot{
+    font-weight: 900;
+    font-size: 56.25px;
+    margin-top: -11px;
+    margin-left: 16px;
+    margin-right: 16px;
+    position: absolute;
+    pointer-events: none;
+    overflow-y: hidden;
+}
+  
+.content item input{
+    width: 100%;
+    font-size: 19px;
+    font-weight: 700;
+    margin-left: 46px;
+    height: 75px;
+    padding: 0;
+    cursor: default;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+  
+.content item completed{
+    width: 0;
+    font-size: 0;
+    transition: 125ms ease-in-out;
+}
+  
+.content item:hover completed{
+    width: 75px;
+    background-color: var(--border);
+    margin-left: 0px;
+    flex: none;
+    color: white;
+    cursor: pointer;
+    
+}
+.content item:hover completed p{
+    text-align: center;
+    font-size: 23px;
+    transform: translate(0, -3px);
+}
+  
+.content item completed:hover{
+    color: var(--done);
+}
+  
+.content add {
+    color: var(--lightgray);
+    width: 95vw;
+    max-width: 800px;
+    height: 65px;
+    border-radius: 10px;
+    border: 2px var(--lightgray) solid;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    transition: 75ms linear all;
+    cursor: pointer;
+}
+  
+.content cnt {
+    margin: auto;
+    transition: 75ms linear all;
+}
+  
+.content cnt plus {
+    font-weight: 500;
+    font-size: 24px;
+    height: 24px;
+    position: absolute;
+}
+  
+.content cnt x {
+    margin-left: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    display: block;
+    min-height: 24px;
+    margin-top: 3px
+}
+  
+.content add:hover{
+    background-color: var(--block);
+    border-color: var(--block);
+}
+  
+.content add:hover cnt{
+    color: var(--header);
+}
+  
+.done dot, item dot {
+    font-size: 0px !important;
+    transition: 75ms width linear !important;
+    width: 0px !important;
+    margin: 0 !important;
+    background-color: var(--border);
+    position: relative !important;
+    text-align: center;
+    flex: none;
+    font-size: 36px !important;
+    padding-top: 12px;
+    font-weight: 700 !important;
+    pointer-events: all !important;
+    cursor: pointer;
+    margin-top: -3px !important;
+}
+  
+.done:hover dot, item:hover dot {
+    width: 75px !important;
+}
+  
+.done dot:hover, item dot:hover {
+    color: var(--done);
+}
+
+.done input{
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    color: #a8bcd6 !important;
+    pointer-events: none;
+    margin-left: 18px !important;
+}
+
+item input:focus {
+    color: #ffffff50;
+}
+  
+.done completed:hover p{
+    color: var(--delete);
+}
+.done completed p{
+    font-weight: 900;
+    transform: translate(0, -3px);
+}
+  
+.head centerr{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 50%;
+    pointer-events: all;
+    height: 45px;
+    transform: translate(-50%, 0);
+    overflow-x: scroll;
+    overflow-y: visible;
+    max-width: calc(100% - 215px);
+    margin-left: 25px;
+    scrollbar-width: none;
+}
+  
+.head centerr elementf{
+    margin: auto;
+    background: #72727215;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 43px;
+    margin-right: 5px;
+    display: flex;
+    cursor: pointer;
+    transition: 75ms all linear;
+}
+
+.head centerr .categories {
+    display: flex;
+    flex-direction: row;
+}
+  
+.head centerr elementf:hover{
+    background: #72727242 !important;
+}
+  
+.head centerr elementf t{
+    margin: auto;
+}
+  
+.selected{
+    border: 1px #ffffff50 solid;
+}
+  
+.head centerr addf {
+    font-size: 20px;
+    height: 43px;
+    width: 43px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #ffffff10;
+    transition: 75ms all linear;
+}
+  
+.head centerr addf:hover {
+    border: 1px solid transparent;
+    background-color: #72727242;
+}
+  
+.head centerr addf t {
+    margin: auto;
+}
+
+.authinp {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #72727215;
+    outline: none;
+    border: 1px solid #ffffff10;
+    color: white;
+    transition: .3s;
+}
+.authinp:hover, .authinp:focus {
+    background: #72727242;
+    cursor: pointer;
+}
+.authinp.submit {
+    width: 100%;
+}
+.authinp.msg {
+    width: 100%;
+    background: #00ff0015;
+    border: 1px solid #00ff0025;
+    cursor: default;
+}
+.authinp.err {
+    width: 100%;
+    background: #ff000015;
+    border: 1px solid #ff000025;
+    cursor: default;
+}
+.authinp.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.authform {
+    padding: 30px;
+    background: var(--header);
+    border-radius: 30px;
+}
+
+.categories {
+    overflow-y: scroll;
+}
+
+elementf t input {
+    font-weight: 700;
+    padding: 0;
+    cursor: text;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: auto;
+    min-width: 10px;
+    white-space: nowrap;
+}

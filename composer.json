@@ -1,0 +1,16 @@
+{
+    "name": "xkotelek/todo",
+    "description": "ToDo - an open-source ToDo list application",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xKotelek",
+            "email": "contact@kotelek.dev"
+        },
+        {
+            "name": "McKpol"
+        }
+    ],
+    "require": {}
+}
