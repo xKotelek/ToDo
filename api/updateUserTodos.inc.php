@@ -3,9 +3,9 @@
 require_once('db.inc.php');
 session_start();
 
-if(isset($_GET['todos_json'])) {
+if(isset($_POST['todos_base64'])) {
     $email = $_SESSION['user_email'];
-    $todos_json = base64_decode($_GET['todos_json']);
+    $todos_json = base64_decode($_POST['todos_base64']);
 
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
     $check_user = $conn->query("SELECT * FROM todos WHERE email = '$email'");

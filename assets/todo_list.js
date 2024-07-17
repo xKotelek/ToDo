@@ -23,6 +23,26 @@ function generateRandomString(length) {
     return result;
 }
 
+function updateUserData(todosBase64, categoriesBase64) {
+    var body = document.body;
+    var randomString = generateRandomString(32);
+    var updateForm = `<form class="updateForm" data-randomString="${randomString}" action="./api/updateUserData.inc.php" method="POST"><input type="hidden" name="todos_base64" value="${todosBase64}"><input type="hidden" name="categories_base64" value="${categoriesBase64}"></form>`;
+    body.innerHTML += updateForm;
+    
+    var formElement = document.querySelector(`.updateForm[data-randomString="${randomString}"]`);
+    formElement.submit();
+}
+
+function updateUserCategories(categoriesBase64) {
+    var body = document.body;
+    var randomString = generateRandomString(32);
+    var updateForm = `<form class="updateForm" data-randomString="${randomString}" action="./api/updateUserCategories.inc.php" method="POST"><input type="hidden" name="categories_base64" value="${categoriesBase64}"></form>`;
+    body.innerHTML += updateForm;
+    
+    var formElement = document.querySelector(`.updateForm[data-randomString="${randomString}"]`);
+    formElement.submit();
+}
+
 function addTodo() {
     var randomString;
     var tokenExists;
@@ -51,7 +71,10 @@ function addTodo() {
 
     var userTodosJson = JSON.stringify(user_todos);
     var userCategoriesJson = JSON.stringify(user_categories);
-    window.location.href = `./api/updateUserData.inc.php?todos_json=${stringToBase64(userTodosJson)}&categories_json=${stringToBase64(userCategoriesJson)}`;
+
+    var todosBase64 = stringToBase64(userTodosJson);
+    var categoriesBase64 = stringToBase64(userCategoriesJson);
+    updateUserData(todosBase64, categoriesBase64);
 }
 
 function markTodoAsDone(dotElement) {
@@ -76,7 +99,10 @@ function markTodoAsDone(dotElement) {
             });
             var userTodosJson = JSON.stringify(user_todos);
             var userCategoriesJson = JSON.stringify(user_categories);
-            window.location.href = `./api/updateUserData.inc.php?todos_json=${stringToBase64(userTodosJson)}&categories_json=${stringToBase64(userCategoriesJson)}`;
+        
+            var todosBase64 = stringToBase64(userTodosJson);
+            var categoriesBase64 = stringToBase64(userCategoriesJson);
+            updateUserData(todosBase64, categoriesBase64);
         }
     }
 }
@@ -103,7 +129,10 @@ function markTodoAsUndone(dotElement) {
             });
             var userTodosJson = JSON.stringify(user_todos);
             var userCategoriesJson = JSON.stringify(user_categories);
-            window.location.href = `./api/updateUserData.inc.php?todos_json=${stringToBase64(userTodosJson)}&categories_json=${stringToBase64(userCategoriesJson)}`;
+        
+            var todosBase64 = stringToBase64(userTodosJson);
+            var categoriesBase64 = stringToBase64(userCategoriesJson);
+            updateUserData(todosBase64, categoriesBase64);
         }
     }
 }
@@ -130,7 +159,10 @@ function removeTodo(completedElement) {
 
             var userTodosJson = JSON.stringify(user_todos);
             var userCategoriesJson = JSON.stringify(user_categories);
-            window.location.href = `./api/updateUserData.inc.php?todos_json=${stringToBase64(userTodosJson)}&categories_json=${stringToBase64(userCategoriesJson)}`;
+        
+            var todosBase64 = stringToBase64(userTodosJson);
+            var categoriesBase64 = stringToBase64(userCategoriesJson);
+            updateUserData(todosBase64, categoriesBase64);
         }
     }
 }
@@ -162,7 +194,10 @@ function editTodoText(dotElement) {
 
                     var userTodosJson = JSON.stringify(user_todos);
                     var userCategoriesJson = JSON.stringify(user_categories);
-                    window.location.href = `./api/updateUserData.inc.php?todos_json=${stringToBase64(userTodosJson)}&categories_json=${stringToBase64(userCategoriesJson)}`;
+                
+                    var todosBase64 = stringToBase64(userTodosJson);
+                    var categoriesBase64 = stringToBase64(userCategoriesJson);
+                    updateUserData(todosBase64, categoriesBase64);
                 });
             }
         }
@@ -190,7 +225,10 @@ function addCategory(plusElement) {
 
     var userTodosJson = JSON.stringify(user_todos);
     var userCategoriesJson = JSON.stringify(user_categories);
-    window.location.href = `./api/updateUserData.inc.php?todos_json=${stringToBase64(userTodosJson)}&categories_json=${stringToBase64(userCategoriesJson)}`;
+
+    var todosBase64 = stringToBase64(userTodosJson);
+    var categoriesBase64 = stringToBase64(userCategoriesJson);
+    updateUserData(todosBase64, categoriesBase64);
 };
 
 function selectCategoryByToken(categoryToken) {
@@ -229,9 +267,10 @@ function displayCategory(categoryElement) {
                     console.log(item.token);
                 }
             });
+
             var userCategoriesJson = JSON.stringify(user_categories);
-            var updateCategoriesUrl = `./api/updateUserCategories.inc.php?categories_json=${stringToBase64(userCategoriesJson)}`;
-            window.location.href = updateCategoriesUrl;
+            var categoriesBase64 = stringToBase64(userCategoriesJson);
+            updateCategories(categoriesBase64);
         });
     }
 }
