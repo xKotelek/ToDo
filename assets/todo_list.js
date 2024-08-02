@@ -270,7 +270,7 @@ function displayCategory(categoryElement) {
 
             var userCategoriesJson = JSON.stringify(user_categories);
             var categoriesBase64 = stringToBase64(userCategoriesJson);
-            updateCategories(categoriesBase64);
+            updateUserCategories(categoriesBase64);
         });
     }
 }
